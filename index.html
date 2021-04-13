@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat&family=Cookie&family=Great+Vibes&family=Indie+Flower&family=Kaushan+Script&family=Kiwi+Maru:wght@300&family=Lato:wght@100&family=Lobster+Two&family=Merriweather:wght@300&family=PT+Sans&family=Pacifico&family=Parisienne&family=Roboto:wght@100&family=Sacramento&family=Satisfy&family=Shadows+Into+Light&family=Syne+Mono&family=Tangerine&family=Yanone+Kaffeesatz:wght@200&display=swap&family=Playball&display=swap" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/logo.png">
+    
+    
+    <title>Text Editor</title>
+  </head>
+
+  <body>
+
+    <section>
+        <div class="container p-5">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center"><img src="img/logo.png" alt="Logo.png">Text Editor</h1>
+                </div>
+            </div>
+            <form id="note-form" method="post">
+                <div class="container-fluid"><!--start of main-->
+                <div class="row">
+                    <div class="col-sm-9">
+                        <input type="text" id="title" placeholder="Title" class="form-control text-center mt-3"><!--title input-->
+                        <hr>
+                        <!--toolbar-->
+                        <div class="row">
+                            <button data-edit="bold" class="button p-2" title="bold"><i class="fas fa-bold fa-lg"></i></button>
+                            <button data-edit="italic" class="button p-2" title="italic"><i class="fas fa-italic fa-lg"></i></button>
+                            <button data-edit="underline" class="button p-2" title="Underline"><i class="fas fa-underline fa-lg"></i></button>
+                            <button data-edit="strikeThrough" class="button p-2" title="Strike Through"><i class="fas fa-strikethrough fa-lg"></i></button>
+                            <button data-edit="superscript" class="button p-2" title="Superscript"><i class="fas fa-superscript fa-lg"></i></button>
+                            <button data-edit="subscript" class="button p-2" title="Subscript"><i class="fas fa-subscript fa-lg"></i></button>
+                            <button data-edit="justifyLeft" class="button p-2" title="Text-Align Left"><i class="fas fa-align-left fa-lg"></i></button>
+                            <button data-edit="justifyCenter" class="button p-2" title="Text-Align Center"><i class="fas fa-align-center fa-lg"></i></button>
+                            <button data-edit="justifyRight" class="button p-2" title="Text-Align Right"><i class="fas fa-align-right fa-lg"></i></button>
+                            <button data-edit="justifyFull" class="button p-2" title="Text-Align Justify"><i class="fas fa-align-justify fa-lg"></i></button>
+                            <button data-edit="insertUnorderedList" class="button p-2" title="Bullet List"><i class="fas fa-list-ul fa-lg"></i></button>
+                            <button data-edit="insertOrderedList" class="button p-2" title="Number List"><i class="fas fa-list-ol fa-lg"></i></button>
+                            <!--<button data-edit="insertImage" class="button p-2" title="Insert Image"><i class="fas fa-images fa-lg"></i></button>-->
+                            <button data-edit="createLink" class="button p-2" title="Link Anchor"><i class="fas fa-link fa-lg"></i></button>
+                            <button data-edit="unlink" class="button p-2" title="Unlink Anchor"><i class="fas fa-unlink fa-lg"></i></button>
+                            <button data-edit="hiliteColor" class="button p-2" title="Highlight"><i class="fas fa-highlighter fa-lg"></i></button>
+                            <button data-edit="cut" class="button p-2" title="Cut"><i class="fas fa-cut fa-lg"></i></button>
+                            <button data-edit="copy" class="button p-2" title="Copy"><i class="fas fa-copy fa-lg"></i></button>
+                            <button data-edit="redo" class="button p-2" title="Redo"><i class="fas fa-redo fa-lg"></i></i></button>
+                            <button data-edit="undo" class="button p-2" title="Undo"><i class="fas fa-undo fa-lg"></i></button>
+                            <button data-edit="toggleMode" class="button p-2" title="HTML Code View"><i class="fas fa-code fa-lg"></i></button>
+                            <button data-edit="removeFormat" class="button p-2" title="Remove Format"><i class="fas fa-remove-format fa-lg"></i></button>
+                            <button data-edit="clear" class="button p-2" title="Clear Content" onclick="clearContent()"><i class="fas fa-broom fa-lg"></i></button>
+                            <button data-edit="dark" class="button p-2" title="Dark/Light Mode" onclick="darkLight()"><i class="fas fa-adjust fa-lg"></i></button>
+                            
+                            <select class="ml-2 mt-2" id="fFamily" onchange="family(this);"></select>
+                            <select class="ml-2 mt-2" onchange="changeSize(this);">
+                                <option>12</option>
+                                <option>14</option>
+                                <option>16</option>
+                                <option>18</option>
+                                <option>20</option>
+                                <option>25</option>
+                                <option>30</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <!--toolbar-->
+
+                        <!--text area-->
+                        <div class="row">
+                            <div class="col">
+                            <div class="form-group" id="text" >
+                                <div class=" p-5" id="content" contenteditable="true"></div>
+                                <textarea class="" id="contentEditor"></textarea>
+                                <p class="ml-3 mt-1 pb-1"><span id="count">0</span> words</p>
+                            </div>
+                            </div>
+                        </div>
+                        <!--text area-->
+
+                        
+                        <div class="row">
+                            <!--color selector-->
+                            <div class="col-sm-4">
+                                <div class="mt-2 mb-2 ml-2 swatches">
+                                    <div class="bg-secondary swatch active"></div>
+                                    <div class="bg-success swatch "></div>
+                                    <div class="bg-warning swatch"></div>
+                                    <div class="bg-info swatch"></div>
+                                    <div class="bg-dark swatch"></div>
+                                </div>
+                            </div>
+                            <!--color selector-->
+
+                            <!--save button-->
+                            <div class="col-sm-4">
+                                <button type="submit" id="submit" class="button mt-2 mb-2 p-1">Save Note</button>
+                                <input type="text" id="noteid" class="hidden">
+                            </div>
+                            <!--save button-->
+
+                            <!--e-mail-->
+                            <div class="col sm-4 mb-2">
+                                <input type="email" placeholder="Enter E-mail Address" id="emailID" class="mr-2 mt-2 mb-2">
+                                <button data-edit="mailto" class="button p-2 mt-2 mb-2" title="Send E-mail" id="mail" onclick="sendEmail()"><i class="fas fa-envelope fa-lg"></i></button>
+                            </div>
+                            <!--e-mail-->
+                        </div>
+                    </div><!--end of main-->
+                    
+                    <!--saved note area-->
+                    <div class="col-sm-3" id="save">
+                        <div class="row">
+                            <h3 class="mt-3 mx-auto">Saved Notes</h3>   
+                        </div>
+
+                        <hr>
+                        <!--note list-->
+                        <div class="row">
+                            <div class="col mt-3">
+                            <div id="note-list" class="d-flex flex-wrap"></div>
+                            </div>
+                        </div>
+                        <!--note list-->
+                    </div>
+                    <!--saved note area-->
+                </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/font.js"></script>
+
+  </body>
+</html>
